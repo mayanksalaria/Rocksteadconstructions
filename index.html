@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Rockstead Constructions</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#1c1b1b",
+                        "inverse-primary": "#c8c6c5",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#5d5f5f",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "outline-variant": "#c4c7c7",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface": "#fbf9f8",
+                        "error": "#ba1a1a",
+                        "tertiary": "#000000",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-tint": "#5f5e5e",
+                        "inverse-on-surface": "#f3f0f0",
+                        "outline": "#747878",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-fixed": "#1c1b1b",
+                        "on-tertiary-container": "#838484",
+                        "background": "#fbf9f8",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "on-surface-variant": "#444748",
+                        "surface-container-highest": "#e4e2e1",
+                        "primary": "#000000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#474746",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "on-primary-container": "#858383",
+                        "surface-bright": "#fbf9f8",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary-fixed-variant": "#454747",
+                        "secondary-container": "#dcdddd",
+                        "surface-container-high": "#eae8e7",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "primary-fixed": "#e5e2e1",
+                        "tertiary-container": "#1a1c1c",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-low": "#f6f3f2",
+                        "on-secondary-container": "#5f6161",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e4e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "32px",
+                        "section-padding-desktop": "120px",
+                        "container-max": "1280px",
+                        "gutter": "32px",
+                        "section-padding-mobile": "64px",
+                        "unit": "8px",
+                        "stack-lg": "64px",
+                        "stack-sm": "16px"
+                    },
+                    "fontFamily": {
+                        "button": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Montserrat"],
+                        "display-lg": ["Montserrat"],
+                        "label-caps": ["Inter"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "headline-md": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "button": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #fbf9f8; color: #1b1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hover-zoom:hover img { transform: scale(1.05); }
+        .ambient-shadow { box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.05); }
+        
+        /* Form success animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .form-success { animation: fadeIn 0.4s ease-out forwards; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+    <!-- TopNavBar -->
+    <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-200 ease-in-out">
+        <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+            <a class="font-display-lg text-headline-md tracking-tighter text-primary" href="#">ROCKSTEAD CONSTRUCTIONS</a>
+            <nav class="hidden md:flex gap-8 items-center">
+                <a class="font-button text-button text-secondary hover:text-primary transition-colors duration-200" href="#projects">Portfolio</a>
+                <a class="font-button text-button text-secondary hover:text-primary transition-colors duration-200" href="#expertise">Services</a>
+                <a class="font-button text-button text-secondary hover:text-primary transition-colors duration-200" href="#expertise">Expertise</a>
+                <a class="font-button text-button text-secondary hover:text-primary transition-colors duration-200" href="#about">About</a>
+                <!-- We removed the standard link here so it can act as a trigger for the popup -->
+                <button id="nav-careers-btn" class="font-button text-button text-secondary hover:text-primary transition-colors duration-200 cursor-pointer">Careers</button>
+            </nav>
+            <a class="hidden md:inline-flex font-button text-button bg-primary text-on-primary px-6 py-3 rounded hover:bg-primary-container transition-all duration-200" href="#contact-form">
+                Contact Us
+            </a>
+            <button class="md:hidden text-primary">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+        <!-- Hero Section -->
+        <section class="relative min-h-[80vh] flex items-center justify-center pt-20 pb-20">
+            <div class="absolute inset-0 z-0 overflow-hidden">
+                <div class="absolute inset-0 bg-primary/40 z-10"></div>
+                <img alt="Rockstead Constructions Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK_HokTey4BRW5tc6FQu_g3PA9891ZCrmtHevgg16MXkWyAncRbQ-6AA6uFpGn3NFcMOSywhfd4w_cT9JVSL9MC8PpHObcIsVLGoqIpJddzNPJOwaVmeI6G5HuiZ6WjKLZl06phpa4kIqlT6UmqBgIP-UydYphLMCSyAP3POC-PssZov0JN-46DD339yu5VQjwXv9ti-CcttnT_Nziz4scrTv0loXTn9ifXB-5vEfDaGKMM2yOBkFLJgEMXCY-cRhmEDdlsoVli3u_">
+            </div>
+            <div class="relative z-20 text-center px-gutter max-w-4xl mx-auto space-y-stack-md text-on-primary">
+                <h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg">
+                    Building Quality That Stands the Test of Time
+                </h1>
+                <p class="font-body-lg text-body-lg max-w-2xl mx-auto opacity-90">
+                    Delivering reliable construction services with craftsmanship, integrity, and attention to detail on every project.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+                    <a class="inline-flex justify-center items-center font-button text-button bg-on-primary text-primary px-8 py-4 rounded hover:bg-surface-container-high transition-all duration-200 ambient-shadow" href="#contact-form">
+                        Get in Touch
+                    </a>
+                    <a class="inline-flex justify-center items-center font-button text-button border border-on-primary text-on-primary px-8 py-4 rounded hover:bg-on-primary/10 transition-all duration-200" href="#projects">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who We Are -->
+        <section class="py-section-padding-mobile md:py-section-padding-desktop px-gutter max-w-container-max mx-auto" id="about">
+            <div class="grid md:grid-cols-2 gap-stack-lg items-center">
+                <div class="space-y-stack-md">
+                    <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest bg-surface-container py-1 px-3 rounded">About Us</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Precision in Every Detail</h2>
+                    <div class="space-y-4 font-body-lg text-body-lg text-on-surface-variant">
+                        <p class="">We believe that true quality is built from the ground up. Our commitment to structural integrity, meticulous planning, and uncompromising craftsmanship defines every project we undertake.</p>
+                        <p class="">With decades of combined experience in high-end structural engineering and construction, we partner with visionary clients to turn complex architectural blueprints into enduring realities. Trust is our foundation.</p>
+                    </div>
+                </div>
+                <div class="relative rounded-lg overflow-hidden h-[500px] ambient-shadow">
+                    <img alt="Construction Project" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLDEV1Ny3T1VEYa4vHS8fBlm_9-VJr6EzKt-32JoKYgH_ocqmXHgGJjbC8S24rXa96Fe685sPGe3qdTaUSGQxRyjilBabXOz4KWH5FC_Ps1ZRjFqagD-lSqFWoZ9WpaN39OPL7aC0dH2Ge-YgvxMEfgzti2Enyr7SaoiIQyuMOhFAWH1W3oG2d9YlGbRRJHJAtPb1iVc727nJwSihH3qOY14lH5MdraesLvqYhkXopc0szwkpZ9jKdW8dVRqpfH17lgMs3Erk_E5jh">
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Core Principles -->
+        <section class="py-section-padding-mobile md:py-section-padding-desktop px-gutter bg-surface-container-low border-y border-outline-variant/30" id="expertise">
+            <div class="max-w-container-max mx-auto space-y-stack-lg">
+                <div class="text-center max-w-2xl mx-auto space-y-4">
+                    <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Methodology</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Our Core Principles</h2>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+                    <!-- Principle 1 -->
+                    <div class="bg-surface p-8 rounded-lg ambient-shadow border border-outline-variant/10 space-y-6 hover:-translate-y-1 transition-transform duration-200">
+                        <div class="flex justify-between items-start text-secondary">
+                            <span class="font-label-caps text-label-caps">01</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300">handshake</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg">Honesty and Trust</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Transparent communication and reliable partnerships are at the core of our operations.</p>
+                    </div>
+                    <!-- Principle 2 -->
+                    <div class="bg-surface p-8 rounded-lg ambient-shadow border border-outline-variant/10 space-y-6 hover:-translate-y-1 transition-transform duration-200">
+                        <div class="flex justify-between items-start text-secondary">
+                            <span class="font-label-caps text-label-caps">02</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300">verified</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg">Excellence Delivered</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Uncompromising standards in materials, engineering, and final execution.</p>
+                    </div>
+                    <!-- Principle 3 -->
+                    <div class="bg-surface p-8 rounded-lg ambient-shadow border border-outline-variant/10 space-y-6 hover:-translate-y-1 transition-transform duration-200">
+                        <div class="flex justify-between items-start text-secondary">
+                            <span class="font-label-caps text-label-caps">03</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300">health_and_safety</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg">Well-being First</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">A strict adherence to safety protocols ensuring the protection of our team and clients.</p>
+                    </div>
+                    <!-- Principle 4 -->
+                    <div class="bg-surface p-8 rounded-lg ambient-shadow border border-outline-variant/10 space-y-6 hover:-translate-y-1 transition-transform duration-200">
+                        <div class="flex justify-between items-start text-secondary">
+                            <span class="font-label-caps text-label-caps">04</span>
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300">architecture</span>
+                        </div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg">Forward-Thinking</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Implementing modern engineering solutions for complex architectural challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Projects -->
+        <section class="py-section-padding-mobile md:py-section-padding-desktop px-gutter max-w-container-max mx-auto" id="projects">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-stack-lg">
+                <div class="space-y-4 max-w-2xl">
+                    <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest bg-surface-container py-1 px-3 rounded">Portfolio</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Recent Projects</h2>
+                </div>
+                <a class="font-button text-button text-primary border-b border-primary pb-1 hover:text-secondary hover:border-secondary transition-colors duration-200" href="#projects">
+                    View All Projects
+                </a>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                <!-- Project 1 -->
+                <a class="group block space-y-4 hover-zoom cursor-pointer" href="#contact-form">
+                    <div class="overflow-hidden rounded-lg aspect-[1.34] bg-surface-container relative ambient-shadow">
+                        <img alt="Residential Framework" class="w-full h-full object-cover transition-transform duration-500 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLDEV1Ny3T1VEYa4vHS8fBlm_9-VJr6EzKt-32JoKYgH_ocqmXHgGJjbC8S24rXa96Fe685sPGe3qdTaUSGQxRyjilBabXOz4KWH5FC_Ps1ZRjFqagD-lSqFWoZ9WpaN39OPL7aC0dH2Ge-YgvxMEfgzti2Enyr7SaoiIQyuMOhFAWH1W3oG2d9YlGbRRJHJAtPb1iVc727nJwSihH3qOY14lH5MdraesLvqYhkXopc0szwkpZ9jKdW8dVRqpfH17lgMs3Erk_E5jh">
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg group-hover:text-secondary transition-colors">Residential Framework</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Structural Engineering</p>
+                    </div>
+                </a>
+                <!-- Project 2 -->
+                <a class="group block space-y-4 hover-zoom cursor-pointer" href="#contact-form">
+                    <div class="overflow-hidden rounded-lg aspect-[1.34] bg-surface-container relative ambient-shadow">
+                        <img alt="Heritage Masonry" class="w-full h-full object-cover transition-transform duration-500 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj6vhYI-b-09_OyoNtS77F3pahABWsHc1TEgeylfFMq_-5wsErS1jL5H7cbavqK5PlKjK247RwToDKkkem2MsXU75HuObGfxOnWU3oxM2CT_bb3sVyK3Q-1jVmqvxWhSZ2SAAFnAYFLhdi0kiezKZU3woMbrILxeyvdihGTbgpbESkRwO8sviX-o0FP5pABGtp1TFeB6w_DlgVyEm9UR1ptZ-VsNUiy-eMSuDGmNUFv05tugosqETCmEAeIswSoki3M5eu3dsRezhV">
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg group-hover:text-secondary transition-colors">Heritage Masonry</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Restoration & Brickwork</p>
+                    </div>
+                </a>
+                <!-- Project 3 -->
+                <a class="group block space-y-4 hover-zoom cursor-pointer" href="#contact-form">
+                    <div class="overflow-hidden rounded-lg aspect-[1.34] bg-surface-container relative ambient-shadow">
+                        <img alt="High-End Interiors" class="w-full h-full object-cover transition-transform duration-500 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCazVbyPso9xur18qYaDniGzjfEZUTCOZJyxBqNS01StF3Hu4mf4rsIofX-BXTU5nv1P0hWn8e2xumzw0xZb08PFoys0KEpXCy873vu4on-z4RQZQY9prqnNbPafvGFjZPdABDnVE73x8qXqBQBDWi5JP85GKp1m1GpG_wYY5lyfOTnQGz67ym8tVd47jDr0QcrnklIOKNRxYMCJ3RGu8x4Re9D61tNVzkAS-CxoQYqwMDbQDZGyGC8HxzUykzzw4szGkN_uPJv4Js5">
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg group-hover:text-secondary transition-colors">High-End Interiors</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Renovation</p>
+                    </div>
+                </a>
+                <!-- Project 4 -->
+                <a class="group block space-y-4 hover-zoom cursor-pointer" href="#contact-form">
+                    <div class="overflow-hidden rounded-lg aspect-[1.34] bg-surface-container relative ambient-shadow">
+                        <img alt="Premium Roofing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK_HokTey4BRW5tc6FQu_g3PA9891ZCrmtHevgg16MXkWyAncRbQ-6AA6uFpGn3NFcMOSywhfd4w_cT9JVSL9MC8PpHObcIsVLGoqIpJddzNPJOwaVmeI6G5HuiZ6WjKLZl06phpa4kIqlT6UmqBgIP-UydYphLMCSyAP3POC-PssZov0JN-46DD339yu5VQjwXv9ti-CcttnT_Nziz4scrTv0loXTn9ifXB-5vEfDaGKMM2yOBkFLJgEMXCY-cRhmEDdlsoVli3u_">
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg group-hover:text-secondary transition-colors">Premium Roofing</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Structural Roofing</p>
+                    </div>
+                </a>
+                <!-- Project 5 -->
+                <a class="group block space-y-4 hover-zoom cursor-pointer" href="#contact-form">
+                    <div class="overflow-hidden rounded-lg aspect-[1.34] bg-surface-container relative ambient-shadow">
+                        <img alt="Commercial Hub" class="w-full h-full object-cover transition-transform duration-500 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAvFGDw1FzvdcPciZCdusplEtcg1uCTc99oSY9d5m7yeOrifbDucpelTMA1boa1hDKCIvQ49iis-omOhTpECwrtxH-AaK6CxS5mu1L-tpg3SRpb5HfxcQD-9qlkvfsmCq7XKsY-Ud6wG53a1JqXokYapP9iY9nB9sUtuOkCLooO8PNG9IBYRNCZ4Zp1ppfV0sBx3fi4CRvV_eD-A1mDq9RMlD3S-AKxXJyl_YibnJ3X314WczhnaqR8HXff8iRCqEYIdNxffFYnpkd">
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg group-hover:text-secondary transition-colors">Commercial Hub</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Commercial Construction</p>
+                    </div>
+                </a>
+                <!-- Project 6 -->
+                <a class="group block space-y-4 hover-zoom cursor-pointer" href="#contact-form">
+                    <div class="overflow-hidden rounded-lg aspect-[1.34] bg-surface-container relative ambient-shadow">
+                        <img alt="Villa Estate" class="w-full h-full object-cover transition-transform duration-500 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv17bZOemqDjR6WU_utvI1v_cI09PQ5dT5CYoooc_smz3QkX2Lc1opecNyIyfXN8ACWn5iWtlYQFJ3l_IiD7EBeYO5428-cEsVcoKnpVobsy2-s6MbGyHMa49oQhtR1Lg3RflI04KLvx2uKxRYzom35lNqjvklLnDeUOUMF89FH02zxBWqiJ-MhoPS8ffz8wqJZkL642rF_K_ODk45tb7ANbTGp6V29xA1ZQQk_uQbeKtUipoxEZ8P75vGsgSTaoJkmUziUePFf8KR">
+                    </div>
+                    <div>
+                        <h3 class="font-headline-md text-headline-md text-primary text-lg group-hover:text-secondary transition-colors">Villa Estate</h3>
+                        <p class="font-body-md text-body-md text-on-surface-variant text-sm">Turnkey Residential</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="py-section-padding-mobile md:py-section-padding-desktop px-gutter bg-surface-container-low border-t border-outline-variant/30" id="contact-form">
+            <div class="max-w-3xl mx-auto space-y-stack-md">
+                <div class="text-center space-y-4">
+                    <h2 class="font-headline-lg text-headline-lg text-primary" id="contact-title">Submit Your Details</h2>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Discuss your next project with our structural engineering team.</p>
+                </div>
+                <div class="bg-surface p-8 md:p-12 rounded-xl ambient-shadow">
+                    
+                    <!-- Updated FormSubmit Form: Changed to the /ajax/ URL to fix network errors -->
+                    <form class="space-y-6" id="main-contact-form" action="https://formsubmit.co/ajax/seleneotivation@gmail.com" method="POST">
+                        
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="box">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block font-label-caps text-label-caps text-primary" for="fname">First Name</label>
+                                <input class="w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 focus:ring-0 focus:border-primary transition-colors font-body-md text-primary" id="fname" name="fname" required="" type="text">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block font-label-caps text-label-caps text-primary" for="lname">Last Name</label>
+                                <input class="w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 focus:ring-0 focus:border-primary transition-colors font-body-md text-primary" id="lname" name="lname" required="" type="text">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block font-label-caps text-label-caps text-primary" for="phone">Phone (with country code)</label>
+                                <input class="w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 focus:ring-0 focus:border-primary transition-colors font-body-md text-primary" id="phone" name="phone" required="" type="tel">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block font-label-caps text-label-caps text-primary" for="email">Email Address</label>
+                                <input class="w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 focus:ring-0 focus:border-primary transition-colors font-body-md text-primary" id="email" name="email" required="" type="email">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block font-label-caps text-label-caps text-primary" for="message">Message / Project Details</label>
+                            <textarea class="w-full border-0 border-b border-outline-variant bg-transparent px-0 py-2 focus:ring-0 focus:border-primary transition-colors font-body-md text-primary resize-none" id="message" name="message" required="" rows="4"></textarea>
+                        </div>
+                        <div class="pt-4 flex items-center justify-between">
+                            <button class="font-button text-button bg-primary text-on-primary px-8 py-4 rounded hover:bg-primary-container transition-all duration-200 w-full md:w-auto" type="submit">
+                                Send Message
+                            </button>
+                            <div class="hidden text-secondary font-body-md text-sm ml-4 form-success flex items-center gap-2" id="form-success-msg">
+                                <span class="material-symbols-outlined text-primary">check_circle</span>
+                                we will get in touch :)
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Updated Footer Component -->
+    <footer class="w-full py-stack-lg border-t border-outline-variant bg-surface">
+        <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-stack-sm">
+            <div class="font-display-lg text-headline-md text-primary">Rockstead Constructions</div>
+            <div class="font-body-md text-body-md text-secondary">All rights reserved</div>
+        </div>
+    </footer>
+
+    <!-- Careers Popup Modal -->
+    <div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-primary/20 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none" id="careers-popup">
+        <div class="bg-surface p-8 md:p-12 rounded-xl max-w-lg w-full ambient-shadow transform transition-transform duration-300 scale-95" id="careers-popup-content">
+            <div class="space-y-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface-container text-primary mb-2">
+                    <span class="material-symbols-outlined">work</span>
+                </div>
+                <h2 class="font-headline-lg text-headline-lg text-primary">We're Hiring</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Join our growing team and become part of a company built on quality, integrity, and professionalism.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                    <button class="font-button text-button bg-primary text-on-primary px-6 py-3 rounded hover:bg-primary-container transition-all duration-200" id="btn-apply-now">
+                        Apply Now
+                    </button>
+                    <button class="font-button text-button border border-outline text-primary px-6 py-3 rounded hover:bg-surface-container transition-all duration-200" id="btn-close-popup">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updated WhatsApp Floating Bubble -->
+    <div class="fixed bottom-6 right-6 z-50 group">
+        <div class="absolute bottom-full right-0 mb-4 w-64 bg-surface p-4 rounded-lg ambient-shadow border border-outline-variant/20 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 origin-bottom-right">
+            <p class="font-body-md text-body-md text-primary mb-3 text-sm">Need assistance? We're here to help.</p>
+            <!-- Added the pre-filled message URL to the menu button -->
+            <a class="flex w-full items-center justify-center gap-2 font-button text-button bg-[#25D366] text-white px-4 py-2 rounded hover:bg-[#20b858] transition-colors" href="https://wa.me/447359132294?text=HI%2C%20I%20would%20like%20to%20enquire%20%3A%29" target="_blank" rel="noopener noreferrer">
+                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 414.7c-32 0-63.5-8.5-91.1-24.7l-6.5-3.8-67.6 17.7 18-65.9-4.2-6.7C55.4 302.2 45.4 263.7 45.4 222c0-101.4 82.5-184 184-184 98.2 0 178.2 80 178.2 184 .1 101.4-82.4 184-188 184zM324.9 292.1c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-2.1-3.6 2.1-3.2 7.6-14.2 1.4-2.8 2.8-5.1 1.4-7.9-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                </svg>
+                Enquire on WhatsApp
+            </a>
+            <div class="absolute -bottom-2 right-6 w-4 h-4 bg-surface border-b border-r border-outline-variant/20 transform rotate-45"></div>
+        </div>
+        
+        <!-- Added the pre-filled message URL to the circle icon -->
+        <a href="https://wa.me/447359132294?text=HI%2C%20I%20would%20like%20to%20enquire%20%3A%29" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center ambient-shadow hover:bg-[#128C7E] transition-transform duration-200 hover:scale-105 relative cursor-pointer">
+            <svg class="w-7 h-7 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zM223.9 414.7c-32 0-63.5-8.5-91.1-24.7l-6.5-3.8-67.6 17.7 18-65.9-4.2-6.7C55.4 302.2 45.4 263.7 45.4 222c0-101.4 82.5-184 184-184 98.2 0 178.2 80 178.2 184 .1 101.4-82.4 184-188 184zM324.9 292.1c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-2.1-3.6 2.1-3.2 7.6-14.2 1.4-2.8 2.8-5.1 1.4-7.9-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            </svg>
+            <span class="absolute top-0 right-0 w-3 h-3 bg-white border-2 border-surface rounded-full"></span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup Navbar Careers trigger & Popup Configuration
+            const navCareersBtn = document.getElementById('nav-careers-btn');
+            const popup = document.getElementById('careers-popup');
+            const popupContent = document.getElementById('careers-popup-content');
+            const btnClose = document.getElementById('btn-close-popup');
+            const btnApply = document.getElementById('btn-apply-now');
+            
+            const contactTitle = document.getElementById('contact-title');
+            const contactFormSection = document.getElementById('contact-form');
+            const messageField = document.getElementById('message');
+
+            const openPopup = () => {
+                popup.classList.remove('opacity-0', 'pointer-events-none');
+                popupContent.classList.remove('scale-95');
+            };
+
+            const closePopup = () => {
+                popup.classList.add('opacity-0', 'pointer-events-none');
+                popupContent.classList.add('scale-95');
+            };
+
+            // 1. Show popup EVERY time the page is loaded (after 1 second)
+            setTimeout(openPopup, 1000);
+
+            // 2. Show popup when "Careers" is clicked in the navbar
+            if(navCareersBtn) {
+                navCareersBtn.addEventListener('click', openPopup);
+            }
+
+            btnClose.addEventListener('click', closePopup);
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) closePopup();
+            });
+
+            // Apply Now click handler
+            btnApply.addEventListener('click', () => {
+                closePopup();
+                contactTitle.textContent = "Submit Your Details";
+                messageField.value = "I am interested in applying for a position at Rockstead Constructions. Please find my details attached.";
+                
+                // Smooth scroll to form
+                contactFormSection.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    document.getElementById('fname').focus();
+                }, 800);
+            });
+
+            // Form Submission AJAX Logic
+            const form = document.getElementById('main-contact-form');
+            const successMsg = document.getElementById('form-success-msg');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); // Stop standard redirect
+                
+                const formData = new FormData(form);
+                
+                // Loading State
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm mr-2">progress_activity</span> Sending...';
+                submitBtn.classList.add('opacity-80');
+
+                fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success || data.success === "true") {
+                        form.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Send Message';
+                        submitBtn.classList.remove('opacity-80');
+                        
+                        successMsg.classList.remove('hidden');
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMsg.classList.add('hidden');
+                        }, 5000);
+                    } else {
+                        // If there is still an error (like running locally without a server)
+                        alert("Note: If testing locally from your desktop, this might fail due to browser security (CORS). It will work once hosted online!");
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Send Message';
+                        submitBtn.classList.remove('opacity-80');
+                    }
+                })
+                .catch(error => {
+                    // Fallback alert for local file testing
+                    alert("Network error: If you're opening this file directly on your computer, your browser is blocking the request. It will work smoothly when uploaded to a web server!");
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message';
+                    submitBtn.classList.remove('opacity-80');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
