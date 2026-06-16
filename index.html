@@ -120,6 +120,8 @@
     <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-200 ease-in-out">
         <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
             <a class="font-display-lg text-headline-md tracking-tighter text-primary" href="#">ROCKSTEAD CONSTRUCTIONS</a>
+            
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex gap-8 items-center">
                 <a class="font-button text-button text-secondary hover:text-primary transition-colors duration-200" href="#projects">Portfolio</a>
                 <a class="font-button text-button text-secondary hover:text-primary transition-colors duration-200" href="#expertise">Services</a>
@@ -131,9 +133,25 @@
             <a class="hidden md:inline-flex font-button text-button bg-primary text-on-primary px-6 py-3 rounded hover:bg-primary-container transition-all duration-200" href="#contact-form">
                 Contact Us
             </a>
-            <button class="md:hidden text-primary">
-                <span class="material-symbols-outlined">menu</span>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-primary cursor-pointer p-2">
+                <span class="material-symbols-outlined text-3xl">menu</span>
             </button>
+        </div>
+
+        <!-- Mobile Navigation Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-surface border-b border-outline-variant/30 shadow-lg flex-col px-6 py-4 space-y-4">
+            <a class="mobile-link block font-button text-button text-secondary hover:text-primary transition-colors duration-200 py-2" href="#projects">Portfolio</a>
+            <a class="mobile-link block font-button text-button text-secondary hover:text-primary transition-colors duration-200 py-2" href="#expertise">Services</a>
+            <a class="mobile-link block font-button text-button text-secondary hover:text-primary transition-colors duration-200 py-2" href="#expertise">Expertise</a>
+            <a class="mobile-link block font-button text-button text-secondary hover:text-primary transition-colors duration-200 py-2" href="#about">About</a>
+            <button id="mobile-careers-btn" class="block w-full text-left font-button text-button text-secondary hover:text-primary transition-colors duration-200 py-2 cursor-pointer">Careers</button>
+            <div class="pt-2 pb-2">
+                <a class="mobile-link block w-full text-center font-button text-button bg-primary text-on-primary px-6 py-3 rounded hover:bg-primary-container transition-all duration-200" href="#contact-form">
+                    Contact Us
+                </a>
+            </div>
         </div>
     </header>
 
@@ -413,7 +431,35 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Setup Navbar Careers trigger & Popup Configuration
+            // --- Mobile Menu Toggle Logic ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenuIcon = mobileMenuBtn.querySelector('span');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const mobileCareersBtn = document.getElementById('mobile-careers-btn');
+
+            const toggleMobileMenu = () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenuIcon.textContent = 'menu';
+                } else {
+                    mobileMenuIcon.textContent = 'close';
+                }
+            };
+
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+            // Close mobile menu when clicking any link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    mobileMenuIcon.textContent = 'menu';
+                });
+            });
+
+            // --- Careers Popup Configuration ---
             const navCareersBtn = document.getElementById('nav-careers-btn');
             const popup = document.getElementById('careers-popup');
             const popupContent = document.getElementById('careers-popup-content');
@@ -434,12 +480,22 @@
                 popupContent.classList.add('scale-95');
             };
 
-            // Show popup EVERY time the page is loaded (after 1 second)
+            // 1. Show popup EVERY time the page is loaded (after 1 second)
             setTimeout(openPopup, 1000);
 
-            // Show popup when "Careers" is clicked in the navbar
+            // 2. Show popup when "Careers" is clicked in desktop navbar
             if(navCareersBtn) {
                 navCareersBtn.addEventListener('click', openPopup);
+            }
+
+            // 3. Show popup when "Careers" is clicked in mobile navbar & close menu
+            if(mobileCareersBtn) {
+                mobileCareersBtn.addEventListener('click', () => {
+                    openPopup();
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    mobileMenuIcon.textContent = 'menu';
+                });
             }
 
             btnClose.addEventListener('click', closePopup);
@@ -460,7 +516,7 @@
                 }, 800);
             });
 
-            // Form Submission Hidden Iframe Logic
+            // --- Form Submission Hidden Iframe Logic ---
             const form = document.getElementById('main-contact-form');
             const successMsg = document.getElementById('form-success-msg');
             const submitBtn = form.querySelector('button[type="submit"]');
